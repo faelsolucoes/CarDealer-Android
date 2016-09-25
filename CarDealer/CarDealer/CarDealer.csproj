@@ -98,8 +98,6 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <DependentUpon>AssemblyInfo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\HomeViewModel.cs" />
-    <Compile Include="ViewModels\DetailViewModel.cs" />
     <Compile Include="Templates\InventoryItemTemplate.xaml.cs">
       <DependentUpon>InventoryItemTemplate.xaml</DependentUpon>
     </Compile>
