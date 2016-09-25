@@ -6,6 +6,7 @@
 	           xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
 	           xmlns:converters="clr-namespace:UXDivers.Artina.Grial;assembly=UXDivers.Artina.Grial">
 
+   
   <Application.Resources>
     <!-- http://developer.xamarin.com/guides/cross-platform/xamarin-forms/working-with/styles/ -->
 
