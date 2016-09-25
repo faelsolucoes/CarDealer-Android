@@ -10,19 +10,19 @@ namespace CarDealer.ViewModels
 		public HomeViewModel() {
 		}
 			
-		public List<string> Images {
-			get{ 
-				return SampleData.SocialImageGalleryItems;
-			}
-		}
+		//public List<string> Images {
+		//	get{ 
+		//		return SampleData.SocialImageGalleryItems;
+		//	}
+		//}
 
-		public List<User> Friends 
-		{ 
-			get
-			{
-				return SampleData.Friends;
-			}
-		}
+		//public List<User> Friends 
+		//{ 
+		//	get
+		//	{
+		//		return SampleData.Friends;
+		//	}
+		//}
 
 
 	}

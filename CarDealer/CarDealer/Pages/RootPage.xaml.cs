@@ -19,8 +19,10 @@ namespace CarDealer.Pages
 			_showWelcome = sayWelcome;
 
 			// Empty pages are initially set to get optimal launch experience
-			Master = new ContentPage { Title = "TV Show" };
-			Detail = new NavigationPage(new ContentPage());
+			Master = new ContentPage { Title = "CarDealer" };
+         //Master.IsVisible = false;
+
+         Detail = new NavigationPage(new ContentPage());
 
 		}
 
@@ -54,7 +56,7 @@ namespace CarDealer.Pages
 
         private void InitializeMasterDetail()
         {
-            Master = new ProfilePage();
+         Master = new AboutUsPage();
          //   Detail = new NavigationPage(new LoginPage());
             Detail = new NavigationPage(new MainPage());
 

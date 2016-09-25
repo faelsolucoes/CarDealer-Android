@@ -1,31 +1,188 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-	           xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
-             xmlns:templates="clr-namespace:CarDealer.Templates"
-             x:Class="CarDealer.Pages.MainPage"
-            Title="Restaurant CarDealer">
+<ContentPage
+   xmlns="http://xamarin.com/schemas/2014/forms"
+   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+   xmlns:templates="clr-namespace:CarDealer.Templates"
+   x:Class="CarDealer.Pages.MainPage"
+   BackgroundImage="{ StaticResource HomeBackgroundImage }"
+   Title="Home">
 
-  <ContentPage.ToolbarItems>
+
+   <!--<ContentPage.ToolbarItems>
     <ToolbarItem Name="Login" Command="{Binding LoginCommand}" Text="Login" Order="Primary" Icon="login.png" />
-  </ContentPage.ToolbarItems>
+  </ContentPage.ToolbarItems>-->
 
-  <ListView
-			x:Name="listViewMessages"
-			BackgroundColor="White"
-			RowHeight="100"
-			IsPullToRefreshEnabled ="true"
-			ItemTapped="OnItemTapped"
-			ItemsSource="{ Binding CarDealer }"
-			>
+   <StackLayout>
+      <Grid
+            ColumnSpacing="0"
+            RowSpacing="0"
+            HorizontalOptions="Fill"
+            VerticalOptions="FillAndExpand"
+            Padding="
+            0,220,0,0">
 
-        <ListView.ItemTemplate>
-          <DataTemplate>
-            <ViewCell>
-              <templates:DetailItemTemplate/>
-            </ViewCell>
-          </DataTemplate>
-        </ListView.ItemTemplate>
-      </ListView>
-  
+         <Grid.RowDefinitions>
+            <RowDefinition Height="45" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="45" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="45" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+         </Grid.RowDefinitions>
+
+      <StackLayout
+            HorizontalOptions="Fill"
+            VerticalOptions="StartAndExpand"
+            Grid.Row="0"
+            BackgroundColor="#555c66">
+         <Grid
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="Center"
+               >
+            <Grid.ColumnDefinitions>
+               <ColumnDefinition Width="30" />
+               <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Label
+               Grid.Column="0"
+               Text="&#xf0da;"
+               FontSize="30"
+               Style="{StaticResource FontIcon}"
+               Opacity="1"
+               TextColor="White"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               >
+               <Label.GestureRecognizers>
+                  <TapGestureRecognizer Tapped="OnHomeInventoryTapped" />
+               </Label.GestureRecognizers>
+            </Label>
+            
+            <artina:Button
+               Grid.Column="1"
+               Clicked="OnHomeInventoryTapped"
+               FontAttributes="Bold"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               Style="{DynamicResource TransparentButtonStyle}"
+               Text="Inventory"
+               FontSize="20"
+               TranslationX="-15"/>
+            </Grid>
+         </StackLayout>
+         
+         <StackLayout
+            HorizontalOptions="Fill"
+            VerticalOptions="StartAndExpand"
+            Grid.Row="2"
+            BackgroundColor="#555c66">
+            <Grid
+               HorizontalOptions="FillAndExpand"
+               VerticalOptions="Center"
+               >
+               <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="30" />
+                  <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+
+               <Label
+                  Grid.Column="0"
+                  Text="&#xf0da;"
+                  FontSize="30"
+                  Style="{StaticResource FontIcon}"
+                  Opacity="1"
+                  TextColor="White"
+                  HorizontalOptions="Center"
+                  VerticalOptions="Center"
+                  >
+                  <Label.GestureRecognizers>
+                     <TapGestureRecognizer Tapped="OnHomeServiceRequestTapped" />
+                  </Label.GestureRecognizers>
+               </Label>
+
+               <artina:Button
+                  Grid.Column="1"
+                  Clicked="OnHomeServiceRequestTapped"
+                  FontAttributes="Bold"
+                  HorizontalOptions="Center"
+                  VerticalOptions="Center"
+                  Style="{DynamicResource TransparentButtonStyle}"
+                  Text="Service Request"
+                  FontSize="20"
+                  TranslationX="-15"/>
+            </Grid>
+         </StackLayout>
+            
+         <StackLayout
+            HorizontalOptions="Fill"
+            VerticalOptions="StartAndExpand"
+            Grid.Row="4"
+            BackgroundColor="#555c66">
+            
+            <Grid
+               HorizontalOptions="FillAndExpand"
+               VerticalOptions="Center"
+               >
+               <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="30" />
+                  <ColumnDefinition Width="*" />
+               </Grid.ColumnDefinitions>
+               
+               <Label
+                  Grid.Column="0"
+                  Text="&#xf0da;"
+                  FontSize="30"
+                  Style="{StaticResource FontIcon}"
+                  Opacity="1"
+                  TextColor="White"
+                  HorizontalOptions="Center"
+                  VerticalOptions="Center"
+                  >
+                     <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnHomePromotionsTapped" />
+                     </Label.GestureRecognizers>
+               </Label>
+         
+               <artina:Button
+                  Grid.Column="1"
+                  Clicked="OnHomePromotionsTapped"
+                  FontAttributes="Bold"
+                  HorizontalOptions="Center"
+                  VerticalOptions="Center"
+                  Style="{DynamicResource TransparentButtonStyle}"
+                  Text="Promotions"
+                  FontSize="20"
+                  TranslationX="-15"/>
+            </Grid>
+         </StackLayout>
+
+      <artina:GridOptionsView
+                   x:Name="menuOptions"
+                   Grid.Row="6"
+                   ColumnCount="5"
+                   RowCount="1"
+                   ColumnSpacing="0"
+                   RowSpacing="0"
+                   Padding="5,5,0,5"
+                   VerticalOptions="Center"
+                   BackgroundColor="Black"
+                   ItemsSource="{Binding Items}"
+                   HeightRequest="45">
+            <artina:GridOptionsView.ItemTemplate>
+               <DataTemplate>
+                  <templates:BottomMenuItemTemplate
+                        ShowBackgroundImage="false"
+                        ShowBackgroundColor="false"
+                        ShowiconColoredCircleBackground="false"
+                        TextColor="White" />
+               </DataTemplate>
+            </artina:GridOptionsView.ItemTemplate>
+         </artina:GridOptionsView>
+
+      </Grid>
+   </StackLayout>
+
 </ContentPage>

@@ -1,382 +1,219 @@
-﻿using System.Collections.Generic;
+﻿using CarDealer.Pages;
+using System.Collections.Generic;
 using System.Linq;
+using Xamarin.Forms;
 
 namespace CarDealer.Models
 {
 	public static class SampleData
 	{
-		public static string[] Names = {
-            "Pat Davies",
-            "Janis Spector",
-			"Regina Joplin", 		
-			"Dra. Alessandra Morelle",  	
-			"Margaret Whites", 	
-			"Skyler Harrisson",  
-			"Al Pastorius", 		
-		};
+      private static List<SampleCategory> _samplesCategoryList;
+      private static Dictionary<string, SampleCategory> _samplesCategories;
+      private static List<Sample> _allSamples;
+      private static List<SampleGroup> _samplesGroupedByCategory;
 
-		public static List<string> SocialImageGalleryItems = new List<string>() { 
-			"social_album_1.jpg",
-			"social_album_2.jpg",
-			"social_album_3.jpg",	
-			"social_album_4.jpg",
-			"social_album_5.jpg",
-			"social_album_6.jpg", 
-			"social_album_7.jpg",
-			"social_album_8.jpg",
-			"social_album_9.jpg"
-		};
-        
-		public static List<string> UsersImagesList = new List<string>() { 
-			"friend_thumbnail_27.jpg",
-			"friend_thumbnail_31.jpg",
-			"friend_thumbnail_34.jpg",
-			"alessandra.jpg",
-			"friend_thumbnail_71.jpg",
-			"friend_thumbnail_75.jpg",
-			"friend_thumbnail_93.jpg",
-		};
+      public static List<Inventory> inventoryList = new List<Inventory>()
+      {
+         new Inventory() { name = "Hatchback", photo = ImageSource.FromFile("inventory_Foto1.png") },
+         new Inventory() { name = "Sedan", photo = ImageSource.FromFile("inventory_Foto2.png") },
+         new Inventory() { name = "Truck", photo = ImageSource.FromFile("inventory_Foto3.png") },
+      };
 
-		public static List<string> DashboardImagesList = new List<string>() { 
-			"dashboard_thumbnail_0.jpg",
-			"dashboard_thumbnail_1.jpg",
-			"dashboard_thumbnail_2.jpg",
-			"dashboard_thumbnail_3.jpg",
-			"dashboard_thumbnail_4.jpg",
-			"dashboard_thumbnail_5.jpg",
-			"dashboard_thumbnail_6.jpg",
-			"dashboard_thumbnail_7.jpg",
-			"dashboard_thumbnail_8.jpg",
-		};
+      public static About about = new About()
+      {
+         note = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+         photo = ImageSource.FromFile("CarAbout.png")
+      };
 
-		public static List<string> ProductsImagesList = new List<string>() { 
-			"product_item_0.jpg",
-			"product_item_1.jpg",
-			"product_item_2.jpg",
-			"product_item_3.jpg",
-			"product_item_4.jpg",
-			"product_item_5.jpg",
-			"product_item_6.jpg",
-			"product_item_7.jpg",
-		};
+      public static List<News> newsList = new List<News>()
+      {
+         new News() { note = "Jimmy Kimmel rolls out red carpet as Emmy host", photo = ImageSource.FromFile("news_Foto1.png"), positionDate = "Sep, 20, 2012" },
+         new News() { note = "Medical examiner: Mia Farrow's son Thaddeus killed himself", photo = ImageSource.FromFile("news_Foto2.png"), positionDate = "Sep, 22, 2016" },
+         new News() { note = "With new album 'Harder II Love,' Usher get harder to love", photo = ImageSource.FromFile("news_Foto3.png"), positionDate = "Sep, 22, 2016" }
+      };
 
-		public static List<User> Users = new List<User> {
-			new User( Names[0], UsersImagesList[0] ),
-			new User( Names[1], UsersImagesList[1] ),
-			new User( Names[2], UsersImagesList[2] ),
-			new User( Names[3], UsersImagesList[3] ),
-			new User( Names[4], UsersImagesList[4] ),
-			new User( Names[5], UsersImagesList[5] ),
-			new User( Names[6], UsersImagesList[6] ),
-		};
+      public static List<Contact> contactList = new List<Contact>()
+      {
+         new Contact() { name = "Adam Aqua" },
+         new Contact() { name = "Dryan Boo" }
+      };
 
-		public static List<User> Friends = Users;
-        
-		public static List<Message> Messages = new List<Message> {
-			new Message( 
-				Friends[6], 
-				7, 
-				true,
-				"July 7",
-				"Hey check this out!",
-                "Great food & service. I was hesitant after reading some of the reviews about the service, I went there on Friday night as a test run for my daughters birthday dinner. The hostess and staff were very professional & attentive, I could not fault the service or the food.",
-                true,
-				true
-			),
+      public static List<Featured> featuredList = new List<Featured>()
+      {
+         new Featured() { description = "Save on Oil Change", complement = "Good until 09/27/2013" }
+      };
 
-			new Message( 
-				Friends[5], 
-				3, 
-				false,
-				"Yesterday",
-				"Artina is awesome...you'll love it",
-                "High class restaurant, clearly a lot of attention to detail but falls into the classic pitfall of small portions for high prices. Meals just don't satisfy the appetite for very long.",
-                false,
-				true
-			),
+      public static List<string> ServiceTypeList()
+      {
+         List<string> serviceTypeList = new List<string>();
+         serviceTypeList.Add("Oil Replacement");
 
-			new Message( 
-				Friends[4], 
-				1, 
-				true,
-				"July 7",
-				"Artina is awesome...you'll love it",
-                "For us the best meal we had so far in 3 years in Sydney. We are not regular fine dinners but we were made to feel really comfortable. Vegetarian options were delicious.",
-                false,
-				false
-			),
+         return serviceTypeList;
+      }
 
-			new Message( 
-				Friends[2], 
-				2, 
-				true,
-				"July 7",
-				"Artina is awesome...you'll love it",
-                "The only thing more amazing than the views....is the superb dining experience. Service is second to none.", 
-				false,
-				false
-			),
+      public static Dictionary<string, SampleCategory> SamplesCategories
+      {
+         get
+         {
+            if (_samplesCategories == null)
+            {
+               InitializeHomeSamples();
+            }
 
-			new Message( 
-				Friends[1], 
-				10, 
-				false,
-				"3 minutes ago",
-				"Artina is awesome...you'll love it",
-                "Great food. Pricey but that's to be expected. Waiters are great. Amazing views and atmosphere.", 
-				true,
-				false
-			),
+            return _samplesCategories;
+         }
+      }
 
-			new Message( 
-				Friends[0], 
-				5, 
-				false,
-				"July 7",
-				"Artina is awesome...you'll love it",
-                "We used to really look forward to going here - but NOT anymore. Food is now highly overpriced for what you get and service has gone downhill with attitude of \"The customer is here for us\".", 
-				true,
-				true
-			),
+      private static void InitializeHomeSamples()
+      {
+         var categories = new Dictionary<string, SampleCategory>();
 
-			new Message( 
-				Friends[3], 
-				7, 
-				false,
-				"July 7",
-				"Artina is awesome...you'll love it",
-                "Excellent venue and quality of food! Charge card concept, simply collect your own card on entry, head to your counter of choice, swipe your card, place your order and you're all set.", 
-				true,
-				false
-			),
+         categories.Add(
+            "All",
+            new SampleCategory
+            {
+               Name = "All",
+               BackgroundImage = "",
+               Icon = '\uf1b9',
+               SamplesList = new List<Sample> {
+                  new Sample("About Us", typeof(AboutUsPage), Color.White, "", '\uf1b9'),
+                  new Sample("Locations", typeof(LocationsPage), Color.White, "", '\uf041'),
+                  new Sample("Our News", typeof(OurNewsPage), Color.White, "", '\uf0f6'),
+                  new Sample("Contacts", typeof(ContactsPage), Color.White, "", '\uf007'),
+                  new Sample("Facebook", typeof(FacebookPage), Color.White, "", '\uf230')
+               }
+            }
+         );
 
-		};
+         categories.Add(
+            "About Us",
+            new SampleCategory
+            {
+               Name = "About Us",
+               BackgroundImage = "",
+               Icon = '\uf1b9',
+               SamplesList = new List<Sample> {
+                  new Sample("About Us", typeof(AboutUsPage), Color.Blue, "", '\uf1b9'),
+                  new Sample("Locations", typeof(LocationsPage), Color.White, "", '\uf041'),
+                  new Sample("Our News", typeof(OurNewsPage), Color.White, "", '\uf0f6'),
+                  new Sample("Contacts", typeof(ContactsPage), Color.White, "", '\uf007'),
+                  new Sample("Facebook", typeof(FacebookPage), Color.White, "", '\uf230')
+               }
+            }
+         );
 
-        public static List<Restaurant> CarDealer = new List<Restaurant> {
-            new Restaurant(
-                "article_image_0.jpg",
-                "article_image_0_ban.jpg",
-                "Jamie's Italian Australia, Sydney",
-                "107 Pitt St, Sydney",
-                "11:30–22:00",
-                true
-            ),
+         categories.Add(
+            "Locations",
+            new SampleCategory
+            {
+               Name = "Locations",
+               BackgroundImage = "",
+               Icon = '\uf041',
+               SamplesList = new List<Sample> {
+                  new Sample("About Us", typeof(AboutUsPage), Color.White, "", '\uf1b9'),
+                  new Sample("Locations", typeof(LocationsPage), Color.Blue, "", '\uf041'),
+                  new Sample("Our News", typeof(OurNewsPage), Color.White, "", '\uf0f6'),
+                  new Sample("Contacts", typeof(ContactsPage), Color.White, "", '\uf007'),
+                  new Sample("Facebook", typeof(FacebookPage), Color.White, "", '\uf230')
+               }
+            }
+         );
 
-            new Restaurant(
-                "article_image_1.jpg",
-                "article_image_1_ban.jpg",
-                "ARIA Restaurant",
-                "1 Macquarie St, Sydney",
-                "12:00–14:30, 17:30–22:30",
-                true
-            ),
+         categories.Add(
+            "Our News",
+            new SampleCategory
+            {
+               Name = "Our News",
+               BackgroundImage = "",
+               Icon = '\uf0f6',
+               SamplesList = new List<Sample> {
+                  new Sample("About Us", typeof(AboutUsPage), Color.White, "", '\uf1b9'),
+                  new Sample("Locations", typeof(LocationsPage), Color.White, "", '\uf041'),
+                  new Sample("Our News", typeof(OurNewsPage), Color.Blue, "", '\uf0f6'),
+                  new Sample("Contacts", typeof(ContactsPage), Color.White, "", '\uf007'),
+                  new Sample("Facebook", typeof(FacebookPage), Color.White, "", '\uf230')
+               }
+            }
+         );
 
-            new Restaurant(
-                "article_image_2.jpg",
-                "article_image_2_ban.jpg",
-                "Vapiano",
-                "Cnr King St &, York St, Sydney",
-                "11:00–23:00",
-                true
-            ),
+         categories.Add(
+            "Contacts",
+            new SampleCategory
+            {
+               Name = "Contacts",
+               BackgroundImage = "",
+               Icon = '\uf007',
+               SamplesList = new List<Sample> {
+                  new Sample("About Us", typeof(AboutUsPage), Color.White, "", '\uf1b9'),
+                  new Sample("Locations", typeof(LocationsPage), Color.White, "", '\uf041'),
+                  new Sample("Our News", typeof(OurNewsPage), Color.White, "", '\uf0f6'),
+                  new Sample("Contacts", typeof(ContactsPage), Color.Blue, "", '\uf007'),
+                  new Sample("Facebook", typeof(FacebookPage), Color.White, "", '\uf230')
+               }
+            }
+         );
 
-            new Restaurant(
-                "article_image_3.jpg",
-                "article_image_3_ban.jpg",
-                "Tetsuya's Restaurant",
-                "529 Kent St, Sydney",
-                "17:30–00:00",
-                true
-            ),
+         categories.Add(
+            "Facebook",
+            new SampleCategory
+            {
+               Name = "Facebook",
+               BackgroundImage = "",
+               Icon = '\uf230',
+               SamplesList = new List<Sample> {
+                  new Sample("About Us", typeof(AboutUsPage), Color.White, "", '\uf1b9'),
+                  new Sample("Locations", typeof(LocationsPage), Color.White, "", '\uf041'),
+                  new Sample("Our News", typeof(OurNewsPage), Color.White, "", '\uf0f6'),
+                  new Sample("Contacts", typeof(ContactsPage), Color.White, "", '\uf007'),
+                  new Sample("Facebook", typeof(FacebookPage), Color.Blue, "", '\uf230')
+               }
+            }
+         );
 
-            new Restaurant(
-                "article_image_4.jpg",
-                "article_image_4_ban.jpg",
-                "Kobe Jones Sydney",
-                "29 Lime St, Sydney",
-                "11:00–23:00",
-                true
-            ),
+         _samplesCategories = categories;
 
-            new Restaurant(
-                "article_image_5.jpg",
-                "article_image_5_ban.jpg",
-                "Altitude Restaurant",
-                "Shangri-La Hotel, Sydney",
-                "18:00–22:00",
-                true
-            )
-        };
+         _samplesCategoryList = new List<SampleCategory>();
 
-        public static List<Restaurant> Tables = new List<Restaurant> {
-            new Restaurant(
-                "table.png",
-                "article_image_0_ban.jpg",
-                "Table 1",
-                "",
-                "11:30–22:00",
-                true
-            ),
+         foreach (var sample in _samplesCategories.Values)
+         {
+            _samplesCategoryList.Add(sample);
+         }
 
-            new Restaurant(
-                "table_reserved.png",
-                "article_image_0_ban.jpg",
-                "Table 2",
-                "2 people",
-                "11:30–22:00",
-                true
-            ),
+         _allSamples = new List<Sample>();
 
-            new Restaurant(
-                "table.png",
-                "article_image_0_ban.jpg",
-                "Table 3",
-                "",
-                "11:30–22:00",
-                true
-            ),
+         _samplesGroupedByCategory = new List<SampleGroup>();
 
-            new Restaurant(
-                "table.png",
-                "article_image_0_ban.jpg",
-                "Table 4",
-                "",
-                "11:30–22:00",
-                true
-            ),
+         foreach (var sampleCategory in SamplesCategories.Values)
+         {
+            var sampleItem = new SampleGroup(sampleCategory.Name.ToUpper());
 
-            new Restaurant(
-                "table_reserved.png",
-                "article_image_0_ban.jpg",
-                "Table 5",
-                "4 people",
-                "11:30–22:00",
-                true
-            ),
+            foreach (var sample in sampleCategory.SamplesList)
+            {
+               _allSamples.Add(sample);
+               sampleItem.Add(sample);
+            }
 
-            new Restaurant(
-                "table_reserved.png",
-                "article_image_0_ban.jpg",
-                "Table 6",
-                "3 people",
-                "11:30–22:00",
-                true
-            )
-        };
+            _samplesGroupedByCategory.Add(sampleItem);
+         }
+      }
+   }
 
-        public static List<Message> Memos = new List<Message> {
-            new Message(
-                Friends[5],
-                7,
-                true,
-                "July 7",
-                "Hey check this out!",
-                "Great food & service. I was hesitant after reading some of the reviews about the service, I went there on Friday night as a test run for my daughters birthday dinner. The hostess and staff were very professional & attentive, I could not fault the service or the food.",
-                true,
-                true
-            ),
+   public class SampleGroup : List<Sample>
+   {
+      private readonly string _name;
 
-            new Message(
-                Friends[1],
-                3,
-                false,
-                "Yesterday",
-                "Artina is awesome...you'll love it",
-                "High class restaurant, clearly a lot of attention to detail but falls into the classic pitfall of small portions for high prices. Meals just don't satisfy the appetite for very long.",
-                false,
-                true
-            ),
+      public SampleGroup(string name)
+      {
+         _name = name;
+      }
 
-            new Message(
-                Friends[2],
-                1,
-                true,
-                "July 7",
-                "Artina is awesome...you'll love it",
-                "For us the best meal we had so far in 3 years in Sydney. We are not regular fine dinners but we were made to feel really comfortable. Vegetarian options were delicious.",
-                false,
-                false
-            ),
-        };
+      public string Name
+      {
+         get
+         {
+            return _name;
+         }
+      }
+   }
 
-        public static List<Message> Diaries = new List<Message> {
-            new Message(
-                Friends[5],
-                7,
-                true,
-                "July 7",
-                "Hey check this out!",
-                "In connection with this appellative of 'Whalebone whales,' it is of great leap of yer happiness leadership colors.",
-                true,
-                true
-            ),
-
-            new Message(
-                Friends[1],
-                3,
-                false,
-                "Yesterday",
-                "Artina is awesome...you'll love it",
-                "In connection with this appellative of 'Whalebone whales,' it is of great leap of yer happiness leadership colors.",
-                false,
-                true
-            ),
-
-            new Message(
-                Friends[2],
-                1,
-                true,
-                "July 7",
-                "Artina is awesome...you'll love it",
-                "In connection with this appellative of 'Whalebone whales,' it is of great leap of yer happiness leadership colors.",
-                false,
-                false
-            ),
-        };
-
-        public static List<Message> Medicines = new List<Message> {
-            new Message(
-                Friends[5],
-                7,
-                true,
-                "July 7",
-                "Hey check this out!",
-                "In connection with this appellative of 'Whalebone whales,' it is of great leap of yer happiness leadership colors.",
-                true,
-                true
-            ),
-
-            new Message(
-                Friends[1],
-                3,
-                false,
-                "Yesterday",
-                "Artina is awesome...you'll love it",
-                "In connection with this appellative of 'Whalebone whales,' it is of great leap of yer happiness leadership colors.",
-                false,
-                true
-            ),
-
-            new Message(
-                Friends[2],
-                1,
-                true,
-                "July 7",
-                "Artina is awesome...you'll love it",
-                "In connection with this appellative of 'Whalebone whales,' it is of great leap of yer happiness leadership colors.",
-                false,
-                false
-            ),
-        };
-
-
-
-
-
-        public static List<Message> Comments = Messages.GetRange( (Messages.Count() / 2), (Messages.Count() / 2));	
-
-		public static List<User> SmallUserList = Users.GetRange( 0, 2);	
-
-		
-	}
 }

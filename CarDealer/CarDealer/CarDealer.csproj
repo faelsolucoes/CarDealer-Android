@@ -49,21 +49,36 @@
     </Compile>
     <Compile Include="Helpers\ColorHelper.cs" />
     <Compile Include="Helpers\NavigationService.cs" />
-    <Compile Include="Models\Restaurant.cs" />
-    <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\About.cs" />
+    <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\Featured.cs" />
+    <Compile Include="Models\Inventory.cs" />
+    <Compile Include="Models\News.cs" />
+    <Compile Include="Models\Sample.cs" />
+    <Compile Include="Models\SampleCategory.cs" />
+    <Compile Include="Models\SampleCoordinator.cs" />
     <Compile Include="Models\SampleData.cs" />
-    <Compile Include="Models\User.cs" />
-    <Compile Include="Pages\DetailViewPage.xaml.cs">
-      <DependentUpon>DetailViewPage.xaml</DependentUpon>
+    <Compile Include="Models\ServiceRequest.cs" />
+    <Compile Include="Pages\AboutUsPage.xaml.cs">
+      <DependentUpon>AboutUsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ThankYouPage.xaml.cs">
-      <DependentUpon>ThankYouPage.xaml</DependentUpon>
+    <Compile Include="Pages\ContactsPage.xaml.cs">
+      <DependentUpon>ContactsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\LoginPage.xaml.cs">
-      <DependentUpon>LoginPage.xaml</DependentUpon>
+    <Compile Include="Pages\FacebookPage.xaml.cs">
+      <DependentUpon>FacebookPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\AdminPage.xaml.cs">
-      <DependentUpon>AdminPage.xaml</DependentUpon>
+    <Compile Include="Pages\LocationsPage.xaml.cs">
+      <DependentUpon>LocationsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\OurNewsPage.xaml.cs">
+      <DependentUpon>OurNewsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\InventoryPage.xaml.cs">
+      <DependentUpon>InventoryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\FeaturedPage.xaml.cs">
+      <DependentUpon>FeaturedPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -71,29 +86,27 @@
     <Compile Include="Pages\RootPage.xaml.cs">
       <DependentUpon>RootPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Templates\CommentItemTemplate.xaml.cs">
-      <DependentUpon>CommentItemTemplate.xaml</DependentUpon>
+    <Compile Include="Templates\BottomMenuItemTemplate.xaml.cs">
+      <DependentUpon>BottomMenuItemTemplate.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Templates\DetailItemTemplate.xaml.cs">
-      <DependentUpon>DetailItemTemplate.xaml</DependentUpon>
+    <Compile Include="Templates\FeaturedItemTemplate.xaml.cs">
+      <DependentUpon>FeaturedItemTemplate.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ProfilePage.xaml.cs">
-      <DependentUpon>ProfilePage.xaml</DependentUpon>
+    <Compile Include="Pages\ServiceRequestPage.xaml.cs">
+      <DependentUpon>ServiceRequestPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <DependentUpon>AssemblyInfo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Templates\SocialHeaderTemplate.xaml.cs">
-      <DependentUpon>SocialHeaderTemplate.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\DetailViewModel.cs" />
-    <Compile Include="Templates\ArticleFeedItemTemplate.xaml.cs">
-      <DependentUpon>ArticleFeedItemTemplate.xaml</DependentUpon>
+    <Compile Include="Templates\InventoryItemTemplate.xaml.cs">
+      <DependentUpon>InventoryItemTemplate.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Templates\ArticleVariantItemTemplate.xaml.cs">
-      <DependentUpon>ArticleVariantItemTemplate.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="ViewModels\FeaturedViewModel.cs" />
+    <Compile Include="ViewModels\InventoryViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\ServiceRequestViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App.xaml">
@@ -143,43 +156,21 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Templates\ArticleVariantItemTemplate.xaml">
+    <EmbeddedResource Include="Templates\InventoryItemTemplate.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Templates\ArticleFeedItemTemplate.xaml">
+    <EmbeddedResource Include="Pages\ServiceRequestPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\DetailViewPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Pages\ProfilePage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Templates\CommentItemTemplate.xaml">
+    <EmbeddedResource Include="Templates\FeaturedItemTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Templates\SocialHeaderTemplate.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Templates\DetailItemTemplate.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -189,20 +180,41 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\LoginPage.xaml">
+    <EmbeddedResource Include="Pages\FeaturedPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\AdminPage.xaml">
+    <EmbeddedResource Include="Pages\InventoryPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <EmbeddedResource Include="Pages\ThankYouPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <EmbeddedResource Include="Pages\AboutUsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\LocationsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\OurNewsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\ContactsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\FacebookPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Templates\BottomMenuItemTemplate.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>

@@ -18,8 +18,8 @@ namespace CarDealer.Droid
 
             Xamarin.Forms.Forms.Init(this, bundle);
 
-            ToolbarResource = Resource.Layout.Toolbar;
-            TabLayoutResource = Resource.Layout.Tabs;
+            //ToolbarResource = Resource.Layout.Toolbar;
+            //TabLayoutResource = Resource.Layout.Tabs;
 
             LoadApplication(new App());
         }
