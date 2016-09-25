@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+	x:Class="CarDealer.Templates.InventoryItemTemplate"
+	BackgroundColor="Black">
+
+   <StackLayout
+		HorizontalOptions="FillAndExpand"
+		Orientation="Horizontal"
+      Padding="0, 5">
+
+      <Grid
+         ColumnSpacing="0"
+         RowSpacing="0"
+         HorizontalOptions="FillAndExpand"
+         VerticalOptions="FillAndExpand">
+
+         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="67" />
+            <ColumnDefinition Width="15" />
+            <ColumnDefinition Width="*" />
+         </Grid.ColumnDefinitions>
+
+         <Grid.RowDefinitions>
+            <RowDefinition Height="67" />
+         </Grid.RowDefinitions>
+
+         <Image
+            Grid.Column="0"
+            HeightRequest="67"
+            Source="{ Binding photo }"
+            VerticalOptions="CenterAndExpand"
+            >
+         </Image>
+
+         <Label
+            Grid.Column="2"
+            Text="{Binding name}"
+            TextColor="White"
+            HorizontalOptions="Start"
+            VerticalOptions="CenterAndExpand"
+         />
+
+      </Grid>
+
+   </StackLayout>
+   
+</ContentView>

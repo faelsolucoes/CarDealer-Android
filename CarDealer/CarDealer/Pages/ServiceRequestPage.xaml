@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	Title="Restaurant CarDealer"
+	x:Class="CarDealer.Pages.ServiceRequestPage"
+	xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+	xmlns:templates="clr-namespace:CarDealer.Templates"
+	x:Name="page"
+	BackgroundColor="Black">
+
+   <StackLayout>
+
+      <Grid>
+         <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+         </Grid.RowDefinitions>
+
+         <ScrollView
+            Grid.Row="0"
+            VerticalOptions="FillAndExpand"
+            HorizontalOptions="FillAndExpand">
+
+            <!-- MAIN CONTAINER -->
+            <Grid
+               ColumnSpacing="0"
+               RowSpacing="0"
+               HorizontalOptions="Fill"
+               VerticalOptions="FillAndExpand" >
+
+               <Grid.RowDefinitions>
+                  <RowDefinition Height="60" />
+                  <RowDefinition Height="Auto" />
+                  <RowDefinition Height="*" />
+                  <RowDefinition Height="80" />
+               </Grid.RowDefinitions>
+
+               <Grid Grid.Row="0">
+                  <Grid.ColumnDefinitions>
+                     <ColumnDefinition Width="20" />
+                     <ColumnDefinition Width="Auto" />
+                     <ColumnDefinition Width="*" />
+                  </Grid.ColumnDefinitions>
+
+                  <!-- CLOSE ICON -->
+                  <Label
+                     Grid.Column="0"
+                     Text="&#xf053;"
+                     FontSize="20"
+                     Style="{StaticResource FontIcon}"
+                     Opacity="1"
+                     TextColor="Blue"
+                     HorizontalOptions="Center"
+                     VerticalOptions="Center"
+                  >
+                     <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnBackTapped" />
+                     </Label.GestureRecognizers>
+                  </Label>
+
+                  <Label
+                     Grid.Column="1"
+                     Text="Home"
+                     TextColor="Blue"
+                     HorizontalOptions="Center"
+                     VerticalOptions="Center"
+                  >
+                     <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnBackTapped" />
+                     </Label.GestureRecognizers>
+                  </Label>
+
+                  <!-- Title -->
+                  <Label
+                     Grid.Column="2"
+                     Text="Service Request"
+                     TextColor="White"
+                     HorizontalOptions="Center"
+                     VerticalOptions="Center"
+                     FontSize="24"
+                     TranslationX="-15"
+			         />
+
+               </Grid>
+
+               <Label
+                  Grid.Row="1"
+                  Text="  Schedule an appointment"
+                  TextColor="Red"
+                  HorizontalOptions="Start"
+                  VerticalOptions="Center"
+            />
+
+               <!---FIELDS CONTAINER-->
+               <Grid
+                  Padding="10,15,10,15"
+                  VerticalOptions="StartAndExpand"
+                  Grid.Row="2"
+               >
+                  <Grid.RowDefinitions>
+                     <RowDefinition Height="Auto" />
+                     <RowDefinition Height="50" />
+                     <RowDefinition Height="Auto" />
+                     <RowDefinition Height="200" />
+                     <RowDefinition Height="Auto" />
+                     <RowDefinition Height="50" />
+                     <RowDefinition Height="Auto" />
+                     <RowDefinition Height="*" />
+                  </Grid.RowDefinitions>
+
+                  <Label
+                     Grid.Row="0"
+                     Text="Preferred date"
+                     TextColor="White"
+                     HorizontalOptions="Start"
+                     VerticalOptions="Center"
+                  />
+
+                  <DatePicker 
+                     VerticalOptions="CenterAndExpand" 
+                     Date="{Binding ServiceRequest.preferredDate, Mode=TwoWay}" 
+                     BackgroundColor="White"
+                     Grid.Row="1">
+                     <DatePicker.Format>MM/dd/yyyy</DatePicker.Format>
+                  </DatePicker>
+
+                  <Label
+                     Grid.Row="2"
+                     Text="Contact Info"
+                     TextColor="White"
+                     HorizontalOptions="Start"
+                     VerticalOptions="Center"
+               />
+
+                  <Editor
+                     Grid.Row="3"
+                     VerticalOptions="FillAndExpand"
+                     HorizontalOptions="FillAndExpand"
+                     TextColor="#999999"
+                     Keyboard="Default"
+                     BackgroundColor="White"
+                     Text="{Binding ServiceRequest.contactInfo, Mode=TwoWay}"
+                 />
+
+                  <Label
+                     Grid.Row="4"
+                     Text="Vehicle Info"
+                     TextColor="White"
+                     HorizontalOptions="Start"
+                     VerticalOptions="Center"
+               />
+
+                  <Entry
+                     Grid.Row="5"
+                     TextColor="Black"
+                     VerticalOptions="StartAndExpand"
+                     BackgroundColor="White"
+                     Text="{Binding ServiceRequest.vehicheInfo, Mode=TwoWay}" />
+
+                  <Label
+                     Grid.Row="6"
+                     Text="Service Type"
+                     TextColor="White"
+                     HorizontalOptions="Start"
+                     VerticalOptions="Center"
+               />
+
+                  <Picker
+                     Grid.Row="7"
+                     x:Name="pckServiceType"
+                     Title="Medida (Selecionar)"
+                     VerticalOptions="StartAndExpand"
+                     BackgroundColor="White"
+                     SelectedIndex="{Binding ServiceTypeIndex}"
+               />
+
+               </Grid>
+
+               <StackLayout
+                  HorizontalOptions="Fill"
+                  VerticalOptions="StartAndExpand"
+                  Grid.Row="3"
+                  BackgroundColor="#555c66">
+
+                  <artina:Button
+                     Grid.Column="1"
+                     Clicked="OnSaveTapped"
+                     FontAttributes="Bold"
+                     HorizontalOptions="Center"
+                     VerticalOptions="Center"
+                     Style="{DynamicResource TransparentButtonStyle}"
+                     Text="Save"
+                     FontSize="20"
+                     TranslationX="-15"/>
+
+               </StackLayout>
+
+            </Grid>
+
+         </ScrollView>
+
+         <artina:GridOptionsView
+                      x:Name="menuOptions"
+                      Grid.Row="1"
+                      ColumnCount="5"
+                      RowCount="1"
+                      ColumnSpacing="0"
+                      RowSpacing="0"
+                      Padding="5,5,0,5"
+                      VerticalOptions="Center"
+                      BackgroundColor="Black"
+                      ItemsSource="{Binding Items}"
+                      HeightRequest="45">
+            <artina:GridOptionsView.ItemTemplate>
+               <DataTemplate>
+                  <templates:BottomMenuItemTemplate
+                        ShowBackgroundImage="false"
+                        ShowBackgroundColor="false"
+                        ShowiconColoredCircleBackground="false"
+                        TextColor="White" />
+               </DataTemplate>
+            </artina:GridOptionsView.ItemTemplate>
+         </artina:GridOptionsView>
+
+      </Grid>
+      
+   </StackLayout>
+
+</ContentPage>

@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+   xmlns="http://xamarin.com/schemas/2014/forms"
+   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+   xmlns:artina="clr-namespace:UXDivers.Artina.Shared;assembly=UXDivers.Artina.Shared"
+   x:Class="CarDealer.Templates.BottomMenuItemTemplate"
+   x:Name="Root">
+
+   <ContentView.Content
+      Padding="0,0,0,0"
+      VerticalOptions="End">
+
+      <Grid Padding="0,0,0,0">
+
+         <BoxView
+				BackgroundColor="{Binding BackgroundColor}"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+				IsVisible="{Binding Source={x:Reference Root}, Path=ShowBackgroundColor}"
+			/>
+
+         <StackLayout
+				VerticalOptions="Center"
+				HorizontalOptions="Center"
+				Orientation="Vertical"
+				Spacing="1">
+
+            <Grid>
+
+               <Label
+                  Text="&#xf111;"
+                  Style="{StaticResource FontIcon}"
+                  HorizontalTextAlignment="Center"
+                  Opacity="1"
+                  FontSize="60"
+                  TextColor="{Binding BackgroundColor}"
+                  VerticalOptions="Center"
+                  HorizontalOptions="Center"
+                  IsVisible="{Binding Source={x:Reference Root}, Path=ShowiconColoredCircleBackground}"
+					/>
+
+               <Label
+                  Text="{Binding Icon}"
+                  FontSize="30"
+                  Style="{StaticResource FontIcon}"
+                  HorizontalTextAlignment="Center"
+                  Opacity="1"
+                  TextColor="{Binding BackgroundColor}"
+                  VerticalOptions="Center"
+                  HorizontalOptions="Center"
+					/>
+            </Grid>
+
+            <Label
+					Text="{Binding Icon}"
+					FontSize="30"
+					Style="{StaticResource FontIcon}"
+					HorizontalTextAlignment="Center"
+					Opacity="1"
+					TextColor="{Binding BackgroundColor}"
+					VerticalOptions="Center"
+					HorizontalOptions="Center"
+				/>
+
+            <Label
+					Text="{Binding Name}"
+					TextColor="{Binding BackgroundColor}"
+					FontSize="12"
+               FontAttributes="Bold"
+					HorizontalTextAlignment="Center" />
+
+         </StackLayout>
+
+      </Grid>
+
+   </ContentView.Content>
+   <ContentView.GestureRecognizers>
+      <TapGestureRecognizer Tapped="OnWidgetTapped" />
+   </ContentView.GestureRecognizers>
+   
+</ContentView>
